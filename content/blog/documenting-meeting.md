@@ -1,11 +1,32 @@
 ---
 title: Documenting Meetings
-date: 30-07-2023
+date: 2023-07-20
 feed: show
 category: notes
-tag: Business 
+tags:
+  - Business
+description: Sample description
 ---
 ### Basic Principles
+
+Test blocks
+
+[some](https://google.com)
+
+[Link text Here]('/secondpost')
+
+[alt text for image](./fourthpost/possum.png)
+
+
+Link to another article : [[firstpost]]
+
+[[A sample post]]
+
+{% image "./fourthpost/possum.png", "A possum parent and two possum kids hanging from the iconic red balloon" %}
+
+## image 
+![[possum.png]]
+
 
 1. Have a clear objective for your meeting notes.
 2. Keep your notes concise without losing important information.
@@ -40,6 +61,8 @@ File : 10-Feb-2023.md
 - Notes are either `Decisions` or `Questions`.
 - Journal takes care of the To-Dos. (Same live meeting notes)
 - For projects I use [[Changelog as a consistent communication tool]]
+
+
 
 ---
 > This is the cleaned-up version of my brainstorming session with [Parvathi Mohan](https://www.linkedin.com/in/parvathimohan/), Product at Kaleyra, discussing the use of Obsidian and Logseq for work and meeting documentation.
