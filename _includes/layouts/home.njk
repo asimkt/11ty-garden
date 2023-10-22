@@ -1,8 +1,24 @@
 ---
 layout: layouts/base.njk
 ---
-<div class="flex">
-	Test here
-</div>
 
-{{ content | safe }}
+<div class="items-start self-stretch flex flex-col mt-8 max-md:max-w-full">
+    <div class="items-start self-stretch flex flex-col max-md:max-w-full">
+        <div class="text-slate-500 text-3xl font-bold tracking-tight">
+            Working Notes
+        </div>
+        <div class="text-red-500 text-lg leading-7 w-full mt-4 max-md:max-w-full">
+            <span class="text-slate-500">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper mattis lorem non. Ultrices praesent amet
+            </span>
+            <span class="text-red-500">ipsum justo massa</span>
+            <span class="text-slate-500">
+                . Eu dolor aliquet risus gravida nunc at feugiat consequat purus. Non massa enim vitae duis mattis. Vel in ultricies vel
+                fringilla.
+            </span>
+        </div>
+    </div>
+    <div class="items-start self-stretch flex grow flex-col mt-10 max-md:max-w-full">
+        {{ content | safe }}
+    </div>
+</div>

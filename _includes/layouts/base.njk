@@ -1,67 +1,65 @@
 <!doctype html>
 <html lang="{{ metadata.language }}">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ title or metadata.title }}</title>
-		<meta name="description" content="{{ description or metadata.description }}">
-
-		{#- Atom and JSON feeds included by default #}
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
-
-		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
-		{#- <meta name="generator" content="{{ eleventy.generator }}"> #}
-
-		{#-
-		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
-		1. You can add to them using `{% css %}`
-		2. You can get from them using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
-		3. You can do the same for JS: {% js %}{% endjs %} and <script>{% getBundle "js" %}</script>
-		4. Learn more: https://github.com/11ty/eleventy-plugin-bundle
-		#}
-
-		{#- Add an arbitrary string to the bundle #}
-		{%- css %}* { box-sizing: border-box; }{% endcss %}
-		{#- Add the contents of a file to the bundle #}
-		{%- css %}{% include "public/css/index.css" %}{% endcss %}
-		{#- Or add from node_modules #}
-		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
-
-		{#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
-		<style>{% getBundle "css" %}</style>
-		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
-		<style>
-			{% set css %}
-			{% include "styles/tailwind.css" %}
-			{% endset %}
-			{{css | postcss | safe}}
-		</style>
-	</head>
-	<body>
-		<a href="#skip" class="visually-hidden">Skip to main content</a>
-
-		<header>
-			<a href="/" class="home-link">{{ metadata.title }}</a>
-
-			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-			<nav>
-				<h2 class="visually-hidden">Top level navigation menu</h2>
-				<ul class="nav">
-				{%- for entry in collections.all | eleventyNavigation %}
-					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
-				{%- endfor %}
-				</ul>
-			</nav>
-		</header>
-
-		<main id="skip">
-			{{ content | safe }}
-		</main>
-
-		<footer></footer>
-
-		<!-- Current page: {{ page.url | htmlBaseUrl }} -->
-	</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title or metadata.title }}</title>
+        <meta
+        name="description" content="{{ description or metadata.description }}"> {#- Atom and JSON feeds included by default #}
+        <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+        <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}"> {#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
+        {#- <meta name="generator" content="{{ eleventy.generator }}"> #}
+        {#-
+                                                                                                                                                        		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
+                                                                                                                                                        		1. You can add to them using `{% css %}`
+                                                                                                                                                        		2. You can get from them using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
+                                                                                                                                                        		3. You can do the same for JS: {% js %}{% endjs %} and <script>{% getBundle "js" %}</script>
+                                                                                                                                                        		4. Learn more: https://github.com/11ty/eleventy-plugin-bundle
+                                                                                                                                                        		#}
+        {#- Add an arbitrary string to the bundle #} {%- css %} * { box-sizing: border-box; }
+        {% endcss %}
+        {#- Add the contents of a file to the bundle #}
+        {%- css %}
+        {% include "public/css/index.css" %}
+        {% endcss %}
+        {#- Or add from node_modules #}
+        {# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
+            {#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
+        <style>
+        {% getBundle "css" %}</style>
+        {#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
+        {#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
+            <style>
+{% set css %}
+{% include "styles/tailwind.css" %}
+{% endset %}
+{{css | postcss | safe}}
+    </style>
+    </head>
+        <body class="items-center bg-white flex flex-col px-5"> <div class="justify-between items-start bg-white flex flex-col px-5">
+            <a href="#skip" class="visually-hidden">Skip to main content</a>
+            <div class="items-center self-center flex w-[718px] max-w-full flex-col my-10">
+                <div class="justify-between items-start self-stretch flex w-full gap-5 -ml-px max-md:max-w-full max-md:flex-wrap">
+                    <a href="/" class="text-slate-500 text-left text-lg font-medium self-center w-[175px] my-auto">
+                        {{ metadata.title }}
+                    </a>
+                    <nav class="justify-between items-start self-stretch flex w-[40%] max-w-full gap-5 max-md:justify-center">
+                        <h2 class="visually-hidden">Top level navigation menu</h2>
+                        {%- for entry in collections.all | eleventyNavigation %}
+                            <li class="list-none">
+                                <a class="text-slate-500 text-right text-lg self-stretch" href="{{ entry.url }}" {% if entry.url == page.url %} aria-current="page" {% endif %}>{{ entry.title }}</a>
+                            </li>
+                        {%- endfor %}
+                    </nav>
+                </div>
+                <main id="skip" class="mt-20">
+                    {{ content | safe }}
+                </main>
+                <!-- Current page: {{ page.url | htmlBaseUrl }} -->
+                <footer class="text-slate-500 text-base self-center mt-20">
+                    © 2022 • Contents under CC-BY-NC • Credits
+                </footer>
+            </div>
+        </div>
+    </body>
 </html>
