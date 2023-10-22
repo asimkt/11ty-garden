@@ -6,6 +6,7 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const pluginInterlinker = require("@photogabble/eleventy-plugin-interlinker");
 
 const tailwind = require("tailwindcss");
 const postCss = require("postcss");
@@ -58,6 +59,8 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 	eleventyConfig.addPlugin(pluginBundle);
+
+	eleventyConfig.addPlugin(pluginInterlinker);
 
 	// Filters
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
