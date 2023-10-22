@@ -249,3 +249,8 @@ a[href].header-anchor:focus,
 h2 + .header-anchor {
 	font-size: 1.5em;
 }
+
+/* TODO: The code block is taking more tha 100% width. So adding a hacky fix now */
+code.language-markdown {
+	white-space: pre-wrap;
+}
