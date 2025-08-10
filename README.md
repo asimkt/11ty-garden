@@ -2,6 +2,18 @@
 
 A starter repository showing how to build a blog with the [Eleventy](https://www.11ty.dev/) site generator (using the [v2.0 release](https://www.11ty.dev/blog/eleventy-v2/)).
 
+> Full project documentation is now available in `docs/`:
+>
+> - Overview: `docs/overview.md`
+> - Development: `docs/development.md`
+> - Content Authoring: `docs/content-authoring.md`
+> - Styling & Assets: `docs/styling-and-assets.md`
+> - Images & Media: `docs/images-and-media.md`
+> - Deployment: `docs/deployment.md`
+> - Architecture: `docs/architecture.md`
+> - Troubleshooting: `docs/troubleshooting.md`
+> - Contributing: `CONTRIBUTING.md`
+
 ## Getting Started
 
 * [Want a more generic/detailed getting started guide?](https://www.11ty.dev/docs/getting-started/)
