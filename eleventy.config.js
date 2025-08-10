@@ -107,7 +107,7 @@ module.exports = function (eleventyConfig) {
 		);
 	});
 
-	eleventyConfig.addWatchTarget("./src/_includes/styles/tailwind.css");
+	eleventyConfig.addWatchTarget("./_includes/styles/tailwind.css");
 	eleventyConfig.addNunjucksAsyncFilter("postcss", postcssFilter);
 
 	// Customize Markdown library settings:
