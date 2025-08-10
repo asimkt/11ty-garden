@@ -16,6 +16,8 @@ const cssnano = require("cssnano");
 const pluginDrafts = require("./eleventy.config.drafts.js");
 const pluginImages = require("./eleventy.config.images.js");
 
+const resolvePlugin = (mod) => (mod && (mod.default || mod));
+
 const postcssFilter = (cssCode, done) => {
 	// we call PostCSS here.
 	postCss([
@@ -52,15 +54,15 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(pluginImages);
 
 	// Official plugins
-	eleventyConfig.addPlugin(pluginRss);
-	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
+	eleventyConfig.addPlugin(resolvePlugin(pluginRss));
+	eleventyConfig.addPlugin(resolvePlugin(pluginSyntaxHighlight), {
 		preAttributes: { tabindex: 0 },
 	});
-	eleventyConfig.addPlugin(pluginNavigation);
+	eleventyConfig.addPlugin(resolvePlugin(pluginNavigation));
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-	eleventyConfig.addPlugin(pluginBundle);
+	eleventyConfig.addPlugin(resolvePlugin(pluginBundle));
 
-	eleventyConfig.addPlugin(pluginInterlinker);
+	eleventyConfig.addPlugin(resolvePlugin(pluginInterlinker));
 
 	// Filters
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
