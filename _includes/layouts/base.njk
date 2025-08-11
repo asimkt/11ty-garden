@@ -35,6 +35,9 @@
 {% endset %}
 {{css | postcss | safe}}
     </style>
+    {% if unlisted or private %}
+      <meta name="robots" content="noindex, nofollow">
+    {% endif %}
     </head>
         <body class="items-center bg-white flex flex-col px-5"> <div class="justify-between items-start bg-white flex flex-col px-5">
             <a href="#skip" class="visually-hidden">Skip to main content</a>

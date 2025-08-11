@@ -15,6 +15,7 @@ permalink: /feed/feed.json
 	},
 	"items": [
 		{%- for post in collections.posts | reverse %}
+    {% if not post.data.unlisted and not post.data.private %}
 		{%- set absolutePostUrl = post.url | htmlBaseUrl(metadata.url) %}
 		{
 			"id": "{{ absolutePostUrl }}",
@@ -24,6 +25,7 @@ permalink: /feed/feed.json
 			"date_published": "{{ post.date | dateToRfc3339 }}"
 		}
 		{% if not loop.last %},{% endif %}
+    {% endif %}
 		{%- endfor %}
 	]
 }

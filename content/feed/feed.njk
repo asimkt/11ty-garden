@@ -15,6 +15,7 @@ permalink: /feed/feed.xml
 		<email>{{ metadata.author.email }}</email>
 	</author>
 	{%- for post in collections.posts | reverse %}
+  {% if not post.data.unlisted and not post.data.private %}
 	{% set absolutePostUrl %}{{ post.url | htmlBaseUrl(metadata.url) }}{% endset %}
 	<entry>
 		<title>{{ post.data.title }}</title>
@@ -23,5 +24,6 @@ permalink: /feed/feed.xml
 		<id>{{ absolutePostUrl }}</id>
 		<content type="html">{{ post.templateContent | transformWithHtmlBase(absolutePostUrl, post.url) }}</content>
 	</entry>
+  {% endif %}
 	{%- endfor %}
 </feed>

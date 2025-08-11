@@ -2,8 +2,21 @@ function eleventyComputedPermalink() {
 	// When using `addGlobalData` and you *want* to return a function, you must nest functions like this.
 	// `addGlobalData` acts like a global data file and runs the top level function it receives.
 	return (data) => {
-		// Always skip during non-watch/serve builds
-		if(data.draft && !process.env.BUILD_DRAFTS) {
+		// Always skip if explicitly private
+		if (data.private) {
+			return false;
+		}
+
+		// Schedule: skip until publishOn in non-serve builds
+		if (data.publishOn) {
+			let publishOnDate = new Date(data.publishOn);
+			if (!process.env.BUILD_DRAFTS && publishOnDate > new Date()) {
+				return false;
+			}
+		}
+
+		// Always skip during non-watch/serve builds if draft
+		if (data.draft && !process.env.BUILD_DRAFTS) {
 			return false;
 		}
 
@@ -15,8 +28,21 @@ function eleventyComputedExcludeFromCollections() {
 	// When using `addGlobalData` and you *want* to return a function, you must nest functions like this.
 	// `addGlobalData` acts like a global data file and runs the top level function it receives.
 	return (data) => {
-		// Always exclude from non-watch/serve builds
-		if(data.draft && !process.env.BUILD_DRAFTS) {
+		// Exclude from collections if private or unlisted
+		if (data.private || data.unlisted) {
+			return true;
+		}
+
+		// Schedule: exclude until publishOn in non-serve builds
+		if (data.publishOn) {
+			let publishOnDate = new Date(data.publishOn);
+			if (!process.env.BUILD_DRAFTS && publishOnDate > new Date()) {
+				return true;
+			}
+		}
+
+		// Always exclude from non-watch/serve builds if draft
+		if (data.draft && !process.env.BUILD_DRAFTS) {
 			return true;
 		}
 
@@ -34,7 +60,7 @@ module.exports = eleventyConfig => {
 	let logged = false;
 	eleventyConfig.on("eleventy.before", ({runMode}) => {
 		let text = "Excluding";
-		// Only show drafts in serve/watch modes
+		// Only show drafts and scheduled content in serve/watch modes
 		if(runMode === "serve" || runMode === "watch") {
 			process.env.BUILD_DRAFTS = true;
 			text = "Including";
@@ -42,7 +68,7 @@ module.exports = eleventyConfig => {
 
 		// Only log once.
 		if(!logged) {
-			console.log( `[11ty/eleventy-base-blog] ${text} drafts.` );
+			console.log( `[11ty/eleventy-base-blog] ${text} drafts and scheduled content.` );
 		}
 
 		logged = true;
