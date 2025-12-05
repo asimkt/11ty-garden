@@ -2,10 +2,6 @@
 layout: layouts/base.njk
 ---
 
-{% block head %}
-  <meta name="og:image" content="{{ metadata.url }}previews/{{ page.fileSlug }}.png">
-  <meta name="twitter:image" content="{{ metadata.url }}previews/{{ page.fileSlug }}.png">
-{% endblock %}
 
 {# Only include the syntax highlighter CSS on blog posts #}
 {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}

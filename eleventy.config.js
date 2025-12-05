@@ -114,6 +114,7 @@ module.exports = function (eleventyConfig) {
 		return JSON.stringify(content);
 	});
 
+
 	eleventyConfig.addWatchTarget("./_includes/styles/tailwind.css");
 	eleventyConfig.addNunjucksAsyncFilter("postcss", postcssFilter);
 

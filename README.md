@@ -111,8 +111,11 @@ npm run build
 ## Additional Features
 
 - **Search**: A client-side search feature is available on the `/search` page. It uses a JSON index of the content and a lightweight JavaScript library to perform the search.
-- **Social Sharing Images**: Social sharing images are automatically generated for each blog post at build time.
 - **Pre-commit Linting**: Markdown files are automatically linted for style issues and broken links before they're committed.
+
+## Missing niceties (ideas you can add)
+
+- **Social Sharing Images**: Social sharing images (OG image generation at build time)
 - **RSS category filtering (per tag feeds)**
 - **Git-based CMS integration (e.g., Netlify CMS)**
 
