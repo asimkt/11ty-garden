@@ -1,0 +1,14 @@
+---
+permalink: /search.json
+---
+[
+  {%- for post in collections.posts -%}
+    {
+      "title": {{ post.data.title | jsonify | safe }},
+      "url": "{{ post.url | url }}",
+      "date": "{{ post.date }}",
+      "content": {{ post.templateContent | jsonify | safe }}
+    }
+    {%- if not loop.last -%},{%- endif -%}
+  {%- endfor -%}
+]

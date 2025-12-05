@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {%- for post in collections.posts -%}
+      {
+        "id": "{{ post.fileSlug }}",
+        "title": "{{ post.data.title }}"
+      }
+      {%- if not loop.last -%},{%- endif -%}
+    {%- endfor -%}
+  ]
+}
