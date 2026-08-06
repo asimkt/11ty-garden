@@ -1,0 +1,35 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ metadata.title }}
+
+> {{ metadata.description }}
+
+This file provides information to help Large Language Models (LLMs) understand and navigate this site.
+
+## Notes
+
+{% for post in collections.posts | reverse %}
+{%- set absoluteUrl %}{{ post.url | htmlBaseUrl(metadata.url) }}{% endset -%}
+- [{{ post.data.title | default(post.fileSlug) | default("Untitled Note") }}]({{ absoluteUrl }}){% if post.data.description %}: {{ post.data.description }}{% endif %}
+{% endfor %}
+## Optional
+
+{% for page in collections.all %}
+{%- set isPost = false %}
+{%- if page.data.tags %}
+  {%- set tagMatch %}
+    {%- for tag in page.data.tags %}
+      {%- if tag == "posts" %}1{% endif %}
+    {%- endfor %}
+  {%- endset %}
+  {%- if "1" in tagMatch %}
+    {%- set isPost = true %}
+  {%- endif %}
+{%- endif %}
+{%- if not isPost and page.url and not "/tags/" in page.url and not "/feed/" in page.url and page.url != "/njk-logic-dump/" and page.url != "/" %}
+{%- set absoluteUrl %}{{ page.url | htmlBaseUrl(metadata.url) }}{% endset -%}
+- [{{ page.data.title | default(page.fileSlug) | default("Home") }}]({{ absoluteUrl }}){% if page.data.description %}: {{ page.data.description }}{% endif %}
+{% endif %}
+{%- endfor %}
