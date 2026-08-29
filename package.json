@@ -6,6 +6,7 @@
 		"build": "npx @11ty/eleventy",
 		"build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
 		"start": "npx @11ty/eleventy --serve --quiet",
+		"prepare": "husky install",
 		"debug": "DEBUG=Eleventy* npx @11ty/eleventy",
 		"debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
 		"benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
@@ -43,12 +44,14 @@
 		"@netlify/plugin-lighthouse": "^6.0.4",
 		"@tailwindcss/typography": "^0.5.10",
 		"autoprefixer": "^10.4.16",
-		"cssnano": "^6.0.1",
-		"eleventy-plugin-backlinks": "^0.2.1",
+		"cssnano": "^7.1.2",
+		"eleventy-plugin-backlinks": "^0.3.0",
+		"husky": "^9.1.7",
 		"luxon": "^3.3.0",
-		"markdown-it-anchor": "^8.6.7",
+		"markdown-it-anchor": "^9.2.0",
+		"markdownlint-cli": "^0.46.0",
 		"postcss": "^8.4.31",
-		"tailwindcss": "^3.3.3"
+		"tailwindcss": "^3.4.18"
 	},
 	"dependencies": {
 		"@photogabble/eleventy-plugin-interlinker": "^1.0.2"

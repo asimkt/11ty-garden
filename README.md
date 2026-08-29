@@ -108,13 +108,16 @@ npm run build
 - Any static host: upload `_site/`
 - GitHub Pages (project site): optionally use `npm run build-ghpages` and adjust `pathPrefix`
 
+## Additional Features
+
+- **Search**: A client-side search feature is available on the `/search` page. It uses a JSON index of the content and a lightweight JavaScript library to perform the search.
+- **Pre-commit Linting**: Markdown files are automatically linted for style issues and broken links before they're committed.
+
 ## Missing niceties (ideas you can add)
 
-- Search index generation (e.g., build-time JSON index consumed by client search)
-- Social sharing images (OG image generation at build time)
-- RSS category filtering (per tag feeds)
-- Content linting pre-commit (Markdown/links) via Husky
-- Git-based CMS integration (e.g., Netlify CMS)
+- **Social Sharing Images**: Social sharing images (OG image generation at build time)
+- **RSS category filtering (per tag feeds)**
+- **Git-based CMS integration (e.g., Netlify CMS)**
 
 ## Implementation Notes
 

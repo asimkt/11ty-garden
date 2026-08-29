@@ -109,6 +109,12 @@ module.exports = function (eleventyConfig) {
 		);
 	});
 
+	// JSON filter
+	eleventyConfig.addFilter("jsonify", (content) => {
+		return JSON.stringify(content);
+	});
+
+
 	eleventyConfig.addWatchTarget("./_includes/styles/tailwind.css");
 	eleventyConfig.addNunjucksAsyncFilter("postcss", postcssFilter);
 
